@@ -8,6 +8,7 @@ function SearchForm() {
   const searchText = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
+  // focus searchbox when component mounts
   useEffect(() => {
     if (searchText.current) {
       searchText.current.focus();
@@ -20,8 +21,8 @@ function SearchForm() {
     const tempSearchTerm = searchText.current?.value.trim() ?? "";
 
     if (tempSearchTerm.replace(/[^\w\s]/gi, "").length === 0) {
-      setSearchTerm("the lost world");
-      setResultTitle("Please Enter Something...");
+      setSearchTerm("The Lord of the Rings");
+      setResultTitle("Search your favorite book...");
     } else {
       setSearchTerm(tempSearchTerm);
     }
@@ -34,7 +35,7 @@ function SearchForm() {
       <form className='flex relative' onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='Search book...'
+          placeholder='Search your favorite book...'
           className='xs:w-[350px] sm:w-[650px] px-4 py-4 text-xl rounded-full'
           ref={searchText}
         />

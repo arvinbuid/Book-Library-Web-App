@@ -1,4 +1,4 @@
-import Books from "./components/Books";
+import BooksList from "./components/BooksList";
 import Hero from "./components/Hero";
 import Navbar from "./components/layout/Navbar";
 import {BooksProvider} from "./contexts/BooksContext";
@@ -9,7 +9,7 @@ function App() {
       <BooksProvider>
         <Navbar />
         <Hero />
-        <Books />
+        <BooksList />
       </BooksProvider>
     </>
   );

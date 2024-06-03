@@ -3,16 +3,16 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useState,
 } from "react";
+import {useQuery} from "@tanstack/react-query";
 
 const URL = "https://openlibrary.org/search.json?title=";
 
 export interface Book {
-  key: string;
+  id: string;
   author_name?: string[];
   cover_i?: number;
   edition_count?: number;
@@ -21,6 +21,7 @@ export interface Book {
 }
 
 export interface BooksContextType {
+  isLoading: boolean;
   books: Book[];
   searchTerm: string;
   resultTitle: string;
@@ -36,57 +37,64 @@ interface BooksProviderProps {
 // context
 const BooksContext = createContext<BooksContextType | undefined>(undefined);
 
+// fetch books function
+const fetchBooks = async (searchTerm: any) => {
+  const response = await fetch(`${URL}${searchTerm}`);
+  const data = await response.json();
+  const {docs} = data;
+  // console.log(docs);
+
+  // check if data.docs is available
+  if (docs) {
+    const booksData = docs.map((doc: any) => {
+      const {key, author_name, cover_i, edition_count, first_publish_year, title} = doc;
+
+      return {
+        id: key,
+        author_name: author_name,
+        cover_i: cover_i,
+        edition_count: edition_count,
+        first_publish_year: first_publish_year,
+        title: title,
+      };
+    });
+    return booksData;
+  } else {
+    return [];
+  }
+};
+
 // component
 const BooksProvider: React.FC<BooksProviderProps> = ({children}) => {
-  // books state
-  const [books, setBooks] = useState<Book[]>([]);
-  const [searchTerm, setSearchTerm] = useState("the lost world");
+  const [searchTerm, setSearchTerm] = useState("The Lord of the Rings");
   const [resultTitle, setResultTitle] = useState("");
 
-  // fetch books
-  const fetchBooks = useCallback(async () => {
-    try {
-      const response = await fetch(`${URL}${searchTerm}`);
-      const data = await response.json();
-      const {docs} = data;
-      console.log(docs);
+  const {
+    data: books = [],
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["books", searchTerm],
+    queryFn: () => fetchBooks(searchTerm),
+  });
 
-      if (docs) {
-        const booksData = docs.map((doc: any) => {
-          const {key, author_name, cover_i, edition_count, first_publish_year, title} = doc;
+  // useEffect(() => {
+  //   if (books.length > 0) {
+  //     setResultTitle(`Results for "${searchTerm}".`);
+  //   } else if (!isLoading) {
+  //     setResultTitle("No Result Search Found.");
+  //   }
+  // }, [books, searchTerm, isLoading]);
 
-          return {
-            id: key,
-            author_name: author_name,
-            cover_i: cover_i,
-            edition_count: edition_count,
-            first_publish_year: first_publish_year,
-            title: title,
-          };
-        });
-        setBooks(booksData);
-
-        if (booksData.length > 0) {
-          setResultTitle(`Results for "${searchTerm}".`);
-        } else {
-          setResultTitle("No Result Search Found.");
-        }
-      } else {
-        setBooks([]);
-        setResultTitle("No Result Search Found.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, [searchTerm]);
-
-  useEffect(() => {
-    fetchBooks();
-  }, [searchTerm, fetchBooks]);
+  // display message if error
+  if (error) {
+    return <h1 className='text-4xl text-red font-bold'>There was an error fetching the data.</h1>;
+  }
 
   return (
     <BooksContext.Provider
       value={{
+        isLoading,
         books,
         searchTerm,
         setSearchTerm,
