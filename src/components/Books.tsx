@@ -1,8 +1,14 @@
+import {BooksProvider} from "../contexts/BooksContext";
+
 function Books() {
   return (
-    <div>
-      <p className='text-3xl text-black font-bold'>Books</p>
-    </div>
+    <>
+      <BooksProvider>
+        <div>
+          <p className='text-3xl text-black font-bold'>Books</p>
+        </div>
+      </BooksProvider>
+    </>
   );
 }
 

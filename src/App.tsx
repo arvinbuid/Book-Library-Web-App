@@ -1,13 +1,16 @@
 import Books from "./components/Books";
 import Hero from "./components/Hero";
 import Navbar from "./components/layout/Navbar";
+import {BooksProvider} from "./contexts/BooksContext";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Books />
+      <BooksProvider>
+        <Navbar />
+        <Hero />
+        <Books />
+      </BooksProvider>
     </>
   );
 }
