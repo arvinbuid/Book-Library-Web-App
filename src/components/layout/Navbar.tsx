@@ -1,4 +1,4 @@
-function Nav() {
+function Navbar() {
   return (
     <nav className='px-2 py-2  flex justify-center'>
       <div className='w-[1000px] px-2 py-2 flex justify-between'>
@@ -17,4 +17,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Navbar;
