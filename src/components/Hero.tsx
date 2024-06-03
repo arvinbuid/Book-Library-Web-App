@@ -10,7 +10,7 @@ function Hero() {
           {/* pretitle */}
           <div className='font-semibold uppercase flex items-center text-secondary'>
             <div className='w-10 h-[2px] bg-blue-400 mr-4'></div>
-            New Trend
+            New Books
           </div>
           {/* title */}
           <h1 className='text-[70px] leading-[1.1] font-light mb-4 xs:text-[50px] text-accent'>
