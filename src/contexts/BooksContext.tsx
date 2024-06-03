@@ -1,12 +1,4 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import {Dispatch, ReactNode, SetStateAction, createContext, useContext, useState} from "react";
 import {useQuery} from "@tanstack/react-query";
 
 const URL = "https://openlibrary.org/search.json?title=";

@@ -1,9 +1,15 @@
-import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Loading() {
   return (
     <div>
-      <h1 className='text-4xl text-red font-bold'>Loading...</h1>
+      <ClipLoader
+        color='#36d7b7'
+        loading={true}
+        size={150}
+        aria-label='Loading Spinner'
+        data-testid='loader'
+      />
     </div>
   );
 }
