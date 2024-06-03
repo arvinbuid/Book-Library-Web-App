@@ -1,9 +1,14 @@
 import {Bars3BottomLeftIcon} from "@heroicons/react/16/solid";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
+
   const handleMenuClick = () => setToggleMenu(!toggleMenu);
+
+  useEffect(() => {
+    setToggleMenu(!toggleMenu);
+  }, []);
 
   return (
     <>

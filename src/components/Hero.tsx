@@ -3,7 +3,7 @@ import SearchForm from "./SearchForm";
 
 function Hero() {
   return (
-    <section className='bg-hero h-[630px] bg-no-repeat bg-cover bg-center py-24'>
+    <section className='bg-hero h-[650px] bg-no-repeat bg-cover bg-center py-24'>
       <div className='container xs:mx-2 md:mx-auto px-4 flex h-full xs:max-w-[500px] md:max-w-[750px] backdrop-brightness-75 '>
         {/* text */}
         <div className='flex flex-1 flex-col justify-center'>
