@@ -1,5 +1,5 @@
 import {MagnifyingGlassCircleIcon} from "@heroicons/react/24/solid"; // Ensure correct path
-import {useBooks} from "../contexts/BooksContext";
+import {useBooks} from "./contexts/BooksContext";
 import {useEffect, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -21,13 +21,13 @@ function SearchForm() {
     const tempSearchTerm = searchText.current?.value.trim() ?? "";
 
     if (tempSearchTerm.replace(/[^\w\s]/gi, "").length === 0) {
-      setSearchTerm("The Lord of the Rings");
+      setSearchTerm("Web Development");
       setResultTitle("Search your favorite book...");
     } else {
       setSearchTerm(tempSearchTerm);
     }
 
-    navigate("/");
+    navigate("/book");
   };
 
   return (

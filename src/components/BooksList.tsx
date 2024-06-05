@@ -1,4 +1,4 @@
-import {useBooks} from "../contexts/BooksContext";
+import {useBooks} from "./contexts/BooksContext";
 import coverImg from "../assets/cover-not-available.jpg";
 import Loading from "../Loading";
 import Book from "./Book";
@@ -32,7 +32,7 @@ function BooksList() {
         <div>
           <h2>{resultTitle}</h2>
         </div>
-        <div className='grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 py-6 gap-6'>
+        <div className='grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4 py-6 gap-6'>
           {booksWithCovers.slice(0, 30).map((item, index) => (
             <Book key={index} {...item}></Book>
           ))}

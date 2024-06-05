@@ -1,15 +1,13 @@
-import BooksList from "./components/BooksList";
-import Hero from "./components/Hero";
+import {Outlet} from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import {BooksProvider} from "./contexts/BooksContext";
+import {BooksProvider} from "./components/contexts/BooksContext";
 
 function App() {
   return (
     <>
       <BooksProvider>
         <Navbar />
-        <Hero />
-        <BooksList />
+        <Outlet />
       </BooksProvider>
     </>
   );

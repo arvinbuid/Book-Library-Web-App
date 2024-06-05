@@ -58,7 +58,7 @@ const fetchBooks = async (searchTerm: any) => {
 
 // component
 const BooksProvider: React.FC<BooksProviderProps> = ({children}) => {
-  const [searchTerm, setSearchTerm] = useState("The Lord of the Rings");
+  const [searchTerm, setSearchTerm] = useState("Web Development");
   const [resultTitle, setResultTitle] = useState("");
 
   const {

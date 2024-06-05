@@ -2,19 +2,20 @@ import {Link} from "react-router-dom";
 import {joinAuthorWithComma} from "../helpers";
 
 function Book(book: any) {
+  const {id} = book;
   return (
     <>
-      <section className='w-full h-auto flex justify-center shadow-lg'>
-        <div className='flex flex-col items-center gap-2 px-12 pb-8'>
+      <section className='w-full h-auto flex justify-center shadow-lg mt-[40px]'>
+        <div className='flex flex-col items-center gap-2 px-6 pb-8'>
           {/* Book Image*/}
-          <img src={book.cover_img} alt='Book Image' className='max-w-[280px] h-[450px] mb-6' />
+          <Link to={`/book/${id}`} {...book}>
+            <img src={book.cover_img} alt='Book Image' className='max-w-[300px] h-[450px] mb-6' />
+          </Link>
 
           {/* Book Title */}
-          <Link to={`/book/${book.id}`} {...book}>
-            <div>
-              <span className='text-xl font-bold'>{book.title}</span>
-            </div>
-          </Link>
+          <div>
+            <span className='text-xl font-bold text-center'>{book.title}</span>
+          </div>
 
           {/* Book Author*/}
           <div className='w-full text-xl text-center'>
