@@ -2,7 +2,7 @@ import gigachad from "../assets/gigachad.jpg";
 
 function About() {
   return (
-    <div className='w-full h-auto'>
+    <section className='w-full h-auto mb-4'>
       <div className='flex justify-center py-8'>
         <h1 className='text-4xl font-bold'>About</h1>
       </div>
@@ -32,7 +32,7 @@ function About() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
