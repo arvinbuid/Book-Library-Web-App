@@ -67,7 +67,7 @@ function BookDetails() {
       setBook(data);
     }
 
-    console.log(data);
+    console.log(book);
   }, [data]);
 
   const goPrevious = () => {
