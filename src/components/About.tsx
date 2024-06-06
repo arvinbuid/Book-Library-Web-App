@@ -2,7 +2,7 @@ import gigachad from "../assets/gigachad.jpg";
 
 function About() {
   return (
-    <div className='w-full h-[600px]'>
+    <div className='w-full h-auto'>
       <div className='flex justify-center py-8'>
         <h1 className='text-4xl font-bold'>About</h1>
       </div>
