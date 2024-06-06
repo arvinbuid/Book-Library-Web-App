@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import coverImg from "../assets/cover-not-available.jpg";
 import {useQuery} from "@tanstack/react-query";
 import {ArrowLeftCircleIcon} from "@heroicons/react/16/solid";
@@ -70,20 +70,22 @@ function BookDetails() {
     console.log(data);
   }, [data]);
 
+  const goPrevious = () => {
+    navigate("..", {relative: "path"});
+  };
+
   return (
     <section className='w-full h-auto px-4 flex justify-center'>
       <div className='w-[80vw] h-auto my-[20px]'>
-        <Link to='/book'>
-          <button className='flex items-center gap-2 px-4 py-2 w-[150px] '>
-            <ArrowLeftCircleIcon width={30} />
-            <span className='text-2xl font-bold'>Back</span>
-          </button>
-        </Link>
+        <button className='flex items-center gap-2 px-4 py-2 w-[150px] ' onClick={goPrevious}>
+          <ArrowLeftCircleIcon width={30} />
+          <span className='text-2xl font-bold'>Back</span>
+        </button>
 
-        <div className='flex px-4 xs:flex-col xl:flex-row w-[80vw] bg-yellow-400'>
-          {/* Image */}
+        <div className='flex px-4 xs:flex-col xl:flex-row w-[90vw]'>
+          {/* Book Image */}
           <div className='px-4 py-6 flex justify-center'>
-            <img src={data?.covers} alt='Book Image' className='w-[300px] md:w-[500px]' />
+            <img src={data?.covers} alt='Book Image' className='w-[300px] sm:w-[500px]' />
           </div>
 
           <div className='flex flex-1 flex-col px-6 mt-6 gap-3'>

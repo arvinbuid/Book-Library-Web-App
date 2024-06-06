@@ -6,7 +6,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import BookDetails from "./components/BookDetails.tsx";
 import BooksList from "./components/BooksList.tsx";
-import About from "./components/AboutUs.tsx";
+import About from "./components/About.tsx";
 
 // query
 const queryClient = new QueryClient();
